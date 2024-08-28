@@ -1,1 +1,120 @@
+/*#lang racket
+; Análise
+;   • Quais informações são relevantes e quais podem ser descartadas?
+;   • Existe alguma omissão?
+;   • Existe alguma ambiguidade?
+;   • Quais conhecimentos do domínio do problema são necessários?
+;   • O que deve ser feito?
+;--------------------------------------------------------------------
+; Definição dos tipos de dados
+;    • Quais são as informações envolvidas no problema?
+;    • Como as informações serão representadas?
 
+;--------------------------------------------------------------------
+; Especificação
+;    • Assinatura da função
+;    • Propósito (o que a função faz)
+;    • Exemplos de entrada e saída
+;--------------------------------------------------------------------
+; Implementação
+;      • É necessário conhecimento específico do domínio do problema? Então enumere o
+;        que será utilizado.
+
+;      • Existem casos distintos? Então enumere os casos.
+
+;      • É uma composição de funções? Então use pensamento desejoso e faça a composição
+;        das funções supondo que elas existam.
+
+;      • Os dados de entradas tem autorreferência? Então faça a análise dos
+;        casos base e com autorreferência e chame a função recursivamente nos casos
+;        apropriados.
+;--------------------------------------------------------------------
+; Verificação
+;      • A implementação está de acordo com a especificação?
+;--------------------------------------------------------------------
+; Revisão
+;      • Podemos melhorar a especificação e o código?
+;      • Podemos fazer simplificações eliminando casos especiais (generalizando)?
+;      • Podemos criar abstrações (definição de constantes e funções)?
+;      • Podemos renomear os objetos?
+;----------------------------------------------------------------------
+======================================================================================================
+                                       AUTOREFERENCIA
+         A autorreferência refere-se à capacidade de uma função ou estrutura de dados fazer
+          referência a si mesma. Em Racket, você pode criar funções 
+          autorreferentes definindo funções que chamam a si mesmas. Isso é fundamental para a implementação de funções recursivas. 
+             Exemplo simples de uma função autorreferente em Racket:
+
+                    (define (contagem-regressiva n)
+                    (if (= n 0)
+                        'Fogo!
+                        (begin
+                            (displayln n)
+                            (contagem-regressiva (- n 1)))))
+                
+
+=========================================================================================================
+                                        RECURSIVIDADE
+        A recursividade é a capacidade de uma função se chamar repetidamente até que uma condição de parada seja atendida. É uma técnica poderosa 
+          para resolver problemas que podem ser divididos em subproblemas idênticos ou semelhantes.
+          No exemplo acima, a função contagem-regressiva é recursiva porque chama a si mesma.
+           Exemplo simples de uma função recursiva em Racket:
+           
+                            (define (fatorial n)
+                            (if (= n 0)
+                                1
+                                (* n (fatorial (- n 1)))))     
+
+        Quando você escreve funções recursivas em Racket, é importante fornecer um caso base, que 
+            é a condição de parada. Caso contrário, a função entrará em um loop infinito. Também é crucial
+            garantir que a recursão chegue eventualmente ao caso base. 
+        A autorreferência e a recursividade são ferramentas poderosas em Racket para resolver 
+            problemas complexos de maneira elegante. No entanto, você deve ter cuidado ao usar 
+            recursão, pois ela pode levar a problemas de desempenho se não for projetada corretamente. 
+            Certifique-se de entender completamente o problema que está resolvendo e escolha a abordagem correta.
+*/
+/*
+#######################################################################################################################################################################################
+
+================================================================= EXEMPLOS EM C ===================================================================
+#include <stdio.h>
+
+
+//---------------------------------------------- EXEMPLO DE AUTOREFERENCIA EM C  --------------------------------------------------------------
+void contagem_regressiva(int n) {
+    if (n == 0) {
+        printf("Fogo!\n");
+    } else {
+        printf("%d\n", n);
+        contagem_regressiva(n - 1);
+    }
+}
+
+int main() {
+    int numero;
+    printf("Digite um numero: ");
+    scanf("%d", &numero);
+    contagem_regressiva(numero);
+    return 0;
+}
+
+//          -------------------------------------  EXEMPLO DE RECURSIVIDADE EM C  -----------------------------------------------              
+
+int fatorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * fatorial(n - 1);
+    }
+}
+
+int main() {
+    int numero;
+    printf("Digite um numero: ");
+    scanf("%d", &numero); 
+    int resultado = fatorial(numero);
+    printf("O fatorial de %d eh: %d\n", numero, resultado);
+    return 0;
+}
+
+*/
